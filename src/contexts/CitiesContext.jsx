@@ -6,7 +6,7 @@ import {
   useCallback,
 } from "react";
 
-const BASE_URL = "http://localhost:9000";
+const BASE_URL = "https://bakerallozi.github.io/api2/cities.json";
 
 const CitiesContext = createContext();
 
@@ -91,9 +91,9 @@ function CitiesProvider({ children }) {
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
+       const res = await fetch(`${BASE_URL}`);
         const data = await res.json();
-        dispatch({ type: "city/loaded", payload: data });
+        dispatch({ type: "cities/loaded", payload: data.cities });
       } catch {
         dispatch({
           type: "rejected",
